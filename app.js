@@ -1,8 +1,8 @@
 
 // dichiaro una funzione che generi la stringa con tutti i dati dell'array
-const displayMenuItems = () => {
+const displayMenuItems = (menuItems) => {
   // uso il metodo map sull'array del menu
-  let displayMenu = menu.map(item => {
+  let displayMenu = menuItems.map(item => {
     return `<article class="menu-item">
         <img src="${item.img}" class="photo" alt="menu item">
         <div class="item-info">
@@ -101,5 +101,5 @@ const sectionCenter = document.querySelector('.section-center');
 // aggancio un ascoltatore di eventi alla finestra
 
 window.addEventListener('DOMContentLoaded', () => {
-  displayMenuItems();
+  displayMenuItems(menu);
 })
