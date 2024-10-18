@@ -103,7 +103,14 @@ const btns = document.querySelectorAll('.filter-btn');
 // aggancio un ascoltatore di eventi alla finestra
 
 window.addEventListener('DOMContentLoaded', () => {
+  // invoco la funzione che mostri le voci del menù all'avvio della pagina
   displayMenuItems(menu);
+  // mappo l'array degli elementi nel menù per averne le categorie
+  const categories = menu.map(item => {
+    return item.category;
+  })
+
+
 });
 
 // ciclo sulla lista di bottoni recuperati dal DOM
