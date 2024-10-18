@@ -107,6 +107,9 @@ const menu = [
 const sectionCenter = document.querySelector('.section-center');
 // seleziono i bottoni per i filtri
 const btns = document.querySelectorAll('.filter-btn');
+// seleziono il contenitore dei bottoni
+const btnContainer = document.querySelector('.btn-container');
+
 
 // aggancio un ascoltatore di eventi alla finestra
 
@@ -120,8 +123,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     return values;
   }, ['all']);
+  // dichiaro una variabile coi bottoni basati sulle rispettive categorie usando il map
+  const categoryBtn = categories.map(category => {
+    return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`
+  }).join('');
 
-
+  // inietto dinamicamente i bottoni
+  btnContainer.innerHTML = categoryBtn;
 });
 
 // ciclo sulla lista di bottoni recuperati dal DOM
