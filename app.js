@@ -118,11 +118,15 @@ btns.forEach(btn => {
       if (menuItem.category === category) {
         return menuItem;
       };
+      console.log(menuItem);
 
     });
     // stabilisco la condizione per mostrare tutti gli elementi
     if (category === 'all') {
       displayMenuItems(menu);
+      console.log(menu);
+    } else {
+      displayMenuItems(menuCategory);
     }
   });
 
