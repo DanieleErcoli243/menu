@@ -20,6 +20,51 @@ const displayMenuItems = (menuItems) => {
   sectionCenter.innerHTML = displayMenu;
 };
 
+// dichiaro una funzione per mostrare i bottoni
+const displayMenuBtn = () => {
+  // riduco l'array degli elementi nel menù per averne le categorie
+  const categories = menu.reduce((values, item) => {
+    if (!values.includes(item.category)) {
+      values.push(item.category);
+    }
+    return values;
+  }, ['all']);
+  // dichiaro una variabile coi bottoni basati sulle rispettive categorie usando il map
+  const categoryBtn = categories.map(category => {
+    return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`
+  }).join('');
+
+  // inietto dinamicamente i bottoni
+  btnContainer.innerHTML = categoryBtn;
+  // seleziono i bottoni per i filtri
+  const btns = document.querySelectorAll('.filter-btn');
+  // ciclo sulla lista di bottoni recuperati dal DOM
+  btns.forEach(btn => {
+    // aggancio un ascoltatore di eventi a ogni bottone per i filtri
+    btn.addEventListener('click', e => {
+      // dichiaro una variabile che contenga il dataset del singolo bottone che reagisce all'evento
+      const category = e.currentTarget.dataset.id;
+      // dichiaro un array per filtrare usando le categorie
+      const menuCategory = menu.filter(menuItem => {
+        // stabilisco la condizione in base alla quale filtrare
+        if (menuItem.category === category) {
+          return menuItem;
+        };
+        console.log(menuItem);
+
+      });
+      // stabilisco la condizione per mostrare gli elementi al click
+      if (category === 'all') {
+        displayMenuItems(menu);
+        console.log(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
+    });
+
+  });
+};
+
 const menu = [
   {
     id: 1,
@@ -115,45 +160,6 @@ const btnContainer = document.querySelector('.btn-container');
 window.addEventListener('DOMContentLoaded', () => {
   // invoco la funzione che mostri le voci del menù all'avvio della pagina
   displayMenuItems(menu);
-  // riduco l'array degli elementi nel menù per averne le categorie
-  const categories = menu.reduce((values, item) => {
-    if (!values.includes(item.category)) {
-      values.push(item.category);
-    }
-    return values;
-  }, ['all']);
-  // dichiaro una variabile coi bottoni basati sulle rispettive categorie usando il map
-  const categoryBtn = categories.map(category => {
-    return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`
-  }).join('');
-
-  // inietto dinamicamente i bottoni
-  btnContainer.innerHTML = categoryBtn;
-  // seleziono i bottoni per i filtri
-  const btns = document.querySelectorAll('.filter-btn');
-  // ciclo sulla lista di bottoni recuperati dal DOM
-  btns.forEach(btn => {
-    // aggancio un ascoltatore di eventi a ogni bottone per i filtri
-    btn.addEventListener('click', e => {
-      // dichiaro una variabile che contenga il dataset del singolo bottone che reagisce all'evento
-      const category = e.currentTarget.dataset.id;
-      // dichiaro un array per filtrare usando le categorie
-      const menuCategory = menu.filter(menuItem => {
-        // stabilisco la condizione in base alla quale filtrare
-        if (menuItem.category === category) {
-          return menuItem;
-        };
-        console.log(menuItem);
-
-      });
-      // stabilisco la condizione per mostrare gli elementi al click
-      if (category === 'all') {
-        displayMenuItems(menu);
-        console.log(menu);
-      } else {
-        displayMenuItems(menuCategory);
-      }
-    });
-
-  });
+  // invoco la funzione per iniettare i bottoni dinamicamente
+  displayMenuBtn();
 });
