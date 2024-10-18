@@ -91,5 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
           <p class="item-text">${item.desc}.</p>
         </div>
       </article>`
-  })
+  });
+  // trasformo il nuovo array in una stringa
+  displayMenu = displayMenu.join('');
 })
