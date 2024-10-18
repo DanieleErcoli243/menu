@@ -109,8 +109,21 @@ window.addEventListener('DOMContentLoaded', () => {
 // ciclo sulla lista di bottoni recuperati dal DOM
 btns.forEach(btn => {
   // aggancio un ascoltatore di eventi a ogni bottone per i filtri
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', e => {
+    // dichiaro una variabile che contenga il dataset del singolo bottone che reagisce all'evento
+    const category = e.currentTarget.dataset.id;
+    // dichiaro un array per filtrare usando le categorie
+    const menuCategory = menu.filter(menuItem => {
+      // stabilisco la condizione sulla quale filtrare
+      if (menuItem.category === category) {
+        return menuItem;
+      };
 
+    });
+    // stabilisco la condizione per mostrare tutti gli elementi
+    if (category === 'all') {
+      displayMenuItems(menu);
+    }
   });
 
 });  
