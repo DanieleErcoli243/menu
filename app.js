@@ -72,3 +72,6 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+// seleziono la sezione centrale dal DOM 
+const sectionCenter = document.querySelector('.section-center');
