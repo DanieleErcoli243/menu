@@ -97,6 +97,8 @@ const menu = [
 
 // seleziono la sezione centrale dal DOM 
 const sectionCenter = document.querySelector('.section-center');
+// seleziono i bottoni per i filtri
+const btns = document.querySelectorAll('.filter-btn');
 
 // aggancio un ascoltatore di eventi alla finestra
 
