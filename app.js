@@ -104,4 +104,10 @@ const btns = document.querySelectorAll('.filter-btn');
 
 window.addEventListener('DOMContentLoaded', () => {
   displayMenuItems(menu);
-})
+});
+
+// aggancio un ascoltatore di eventi a ogni bottone per i filtri
+
+btns.addEventListener('click', () => {
+
+});
