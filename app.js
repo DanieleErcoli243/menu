@@ -94,4 +94,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   // trasformo il nuovo array in una stringa
   displayMenu = displayMenu.join('');
+  // inserisco la stringa nella sezione
+  sectionCenter.innerHTML = displayMenu;
 })
