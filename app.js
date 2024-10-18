@@ -113,10 +113,13 @@ const btns = document.querySelectorAll('.filter-btn');
 window.addEventListener('DOMContentLoaded', () => {
   // invoco la funzione che mostri le voci del menù all'avvio della pagina
   displayMenuItems(menu);
-  // mappo l'array degli elementi nel menù per averne le categorie
-  const categories = menu.map(item => {
-    return item.category;
-  })
+  // riduco l'array degli elementi nel menù per averne le categorie
+  const categories = menu.reduce((values, item) => {
+    if (!values.includes(item.category)) {
+      values.push(item.category);
+    }
+    return values;
+  }, ['all']);
 
 
 });
