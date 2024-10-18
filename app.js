@@ -114,14 +114,14 @@ btns.forEach(btn => {
     const category = e.currentTarget.dataset.id;
     // dichiaro un array per filtrare usando le categorie
     const menuCategory = menu.filter(menuItem => {
-      // stabilisco la condizione sulla quale filtrare
+      // stabilisco la condizione in base alla quale filtrare
       if (menuItem.category === category) {
         return menuItem;
       };
       console.log(menuItem);
 
     });
-    // stabilisco la condizione per mostrare tutti gli elementi
+    // stabilisco la condizione per mostrare gli elementi al click
     if (category === 'all') {
       displayMenuItems(menu);
       console.log(menu);
