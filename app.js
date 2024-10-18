@@ -105,8 +105,7 @@ const menu = [
 
 // seleziono la sezione centrale dal DOM 
 const sectionCenter = document.querySelector('.section-center');
-// seleziono i bottoni per i filtri
-const btns = document.querySelectorAll('.filter-btn');
+
 // seleziono il contenitore dei bottoni
 const btnContainer = document.querySelector('.btn-container');
 
@@ -130,30 +129,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // inietto dinamicamente i bottoni
   btnContainer.innerHTML = categoryBtn;
-});
+  // seleziono i bottoni per i filtri
+  const btns = document.querySelectorAll('.filter-btn');
+  // ciclo sulla lista di bottoni recuperati dal DOM
+  btns.forEach(btn => {
+    // aggancio un ascoltatore di eventi a ogni bottone per i filtri
+    btn.addEventListener('click', e => {
+      // dichiaro una variabile che contenga il dataset del singolo bottone che reagisce all'evento
+      const category = e.currentTarget.dataset.id;
+      // dichiaro un array per filtrare usando le categorie
+      const menuCategory = menu.filter(menuItem => {
+        // stabilisco la condizione in base alla quale filtrare
+        if (menuItem.category === category) {
+          return menuItem;
+        };
+        console.log(menuItem);
 
-// ciclo sulla lista di bottoni recuperati dal DOM
-btns.forEach(btn => {
-  // aggancio un ascoltatore di eventi a ogni bottone per i filtri
-  btn.addEventListener('click', e => {
-    // dichiaro una variabile che contenga il dataset del singolo bottone che reagisce all'evento
-    const category = e.currentTarget.dataset.id;
-    // dichiaro un array per filtrare usando le categorie
-    const menuCategory = menu.filter(menuItem => {
-      // stabilisco la condizione in base alla quale filtrare
-      if (menuItem.category === category) {
-        return menuItem;
-      };
-      console.log(menuItem);
-
+      });
+      // stabilisco la condizione per mostrare gli elementi al click
+      if (category === 'all') {
+        displayMenuItems(menu);
+        console.log(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
     });
-    // stabilisco la condizione per mostrare gli elementi al click
-    if (category === 'all') {
-      displayMenuItems(menu);
-      console.log(menu);
-    } else {
-      displayMenuItems(menuCategory);
-    }
-  });
 
-});  
+  });
+});
