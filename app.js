@@ -75,3 +75,9 @@ const menu = [
 
 // seleziono la sezione centrale dal DOM 
 const sectionCenter = document.querySelector('.section-center');
+
+// aggancio un ascoltatore di eventi alla finestra
+
+window.addEventListener('DOMContentLoaded', () => {
+
+})
