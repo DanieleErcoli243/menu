@@ -1,3 +1,25 @@
+
+// dichiaro una funzione che generi la stringa con tutti i dati dell'array
+const displayMenuItems = () => {
+  // uso il metodo map sull'array del menu
+  let displayMenu = menu.map(item => {
+    return `<article class="menu-item">
+        <img src="${item.img}" class="photo" alt="menu item">
+        <div class="item-info">
+          <header>
+            <h4>${item.title}</h4>
+            <h4 class="price">${item.price}</h4>
+          </header>
+          <p class="item-text">${item.desc}.</p>
+        </div>
+      </article>`
+  });
+  // trasformo il nuovo array in una stringa
+  displayMenu = displayMenu.join('');
+  // inserisco la stringa nella sezione
+  sectionCenter.innerHTML = displayMenu;
+};
+
 const menu = [
   {
     id: 1,
@@ -79,21 +101,5 @@ const sectionCenter = document.querySelector('.section-center');
 // aggancio un ascoltatore di eventi alla finestra
 
 window.addEventListener('DOMContentLoaded', () => {
-  // uso il metodo map sull'array del menu
-  let displayMenu = menu.map(item => {
-    return `<article class="menu-item">
-        <img src="${item.img}" class="photo" alt="menu item">
-        <div class="item-info">
-          <header>
-            <h4>${item.title}</h4>
-            <h4 class="price">${item.price}</h4>
-          </header>
-          <p class="item-text">${item.desc}.</p>
-        </div>
-      </article>`
-  });
-  // trasformo il nuovo array in una stringa
-  displayMenu = displayMenu.join('');
-  // inserisco la stringa nella sezione
-  sectionCenter.innerHTML = displayMenu;
+
 })
