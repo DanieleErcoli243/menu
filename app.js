@@ -106,8 +106,11 @@ window.addEventListener('DOMContentLoaded', () => {
   displayMenuItems(menu);
 });
 
-// aggancio un ascoltatore di eventi a ogni bottone per i filtri
+// ciclo sulla lista di bottoni recuperati dal DOM
+btns.forEach(btn => {
+  // aggancio un ascoltatore di eventi a ogni bottone per i filtri
+  btn.addEventListener('click', () => {
 
-btns.addEventListener('click', () => {
+  });
 
-});
+});  
