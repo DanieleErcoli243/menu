@@ -1,0 +1,2 @@
+Menu
+This project consists in a page where menu items are displayed dynamically and filtered by clicking the buttons on the top of the page. I created it by following John Smilga's tutorial for freeCodeCamp and used vanilla html, css and javascript. 
